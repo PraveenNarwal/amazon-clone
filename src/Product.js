@@ -2,21 +2,24 @@ import React from 'react'
 import './Product.css'
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 
-function Product() {
+function Product({ title, image, price, rating }) {
     return (
         <div className='product'>
             <div className='productInfo'>
-                <p>The lean startup</p>
+                <p>{title}</p>
                 <p className='productPrice'>
                     <small>$</small>
-                    <strong>19.99</strong>
+                    <strong>{price}</strong>
                 </p>
                 <div className='productRating'>
-                    <StarBorderIcon />
-                    <StarBorderIcon />
+                    {Array(rating).fill().map((_, i) => (
+                        <StarBorderIcon />
+                    ))}
+
+
                 </div>
             </div>
-            <img src='https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._SX325_BO1,204,203,200_.jpg' alt='product imgae' />
+            <img src={image} alt='product imgae' />
             <button>Add to cart</button>
         </div>
     )
